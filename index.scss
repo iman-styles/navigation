@@ -1,9 +1,5 @@
-// @function nav-image-url($path) {
-//   @return component-url('iman-styles-common', "local/navigation/images/#{$path}");
-// }
-
 @function nav-image-url($path) {
-  @return url("../local/iman-styles-common/local/navigation/images/#{$path}");
+  @return url("../components/iman-styles-navigation/assets/#{$path}");
 }
 
 .nav {
