@@ -549,6 +549,10 @@
     font-weight: 600;
   }
 
+  .im-nav-progress__item a  {
+    background-color: transparent;
+  }
+
   .im-nav-progress__item:first-child:before,
   .im-nav-progress__item.is-visited:before {
     background: $blue-lightest nav-image-url('stripes.gif') top right;
