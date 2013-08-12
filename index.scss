@@ -71,6 +71,10 @@
     position: relative;
     text-transform: uppercase;
 
+    .no-csstransforms & {
+      padding-right: 38px;
+    }
+
     &:after {
       @include triangle(bottom, 9px, 5px, $white);
       content: "";
