@@ -55,14 +55,16 @@
     float: left;
     position: relative;
 
-    &:hover > a {
+    &:hover > a,
+    &:hover > span {
       background: $blue-lightest;
       position: relative;
       z-index: 10;
     }
   }
 
-  > .nav__item > a {
+  > .nav__item > a,
+  > .nav__item > span {
     color: $white;
     font-size: 11px;
     font-weight: bold;
@@ -96,7 +98,8 @@
     display: block;
   }
 
-  .nav__item a {
+  .nav__item a,
+  .nav__item span {
     @include improve-text-rendering;
     display: block;
     font-weight: bold;
