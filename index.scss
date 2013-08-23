@@ -47,9 +47,15 @@
 }
 
 /*
- * Iman - Main blue nav
+ * Iman - Main nav
  */
 .nav-1 {
+  padding-left: 152px;
+
+  // ie8
+  .no-csstransforms & {
+    padding-left: 147px;
+  }
 
   > .nav__item {
     float: left;
@@ -57,7 +63,7 @@
 
     &:hover > a,
     &:hover > span {
-      background: $blue-lightest;
+      background: lighten($purple, 8%);
       position: relative;
       z-index: 10;
     }
@@ -65,31 +71,41 @@
 
   > .nav__item > a,
   > .nav__item > span {
+    font-family: $font-family-roboto;
     color: $white;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 35px;
-    padding: 10px 40px 10px 20px;
+    padding: 12px 40px 12px 20px;
     position: relative;
-    text-transform: uppercase;
 
     .no-csstransforms & {
-      padding-right: 38px;
+      font-size: 13px;
+      padding: 12px 38px 12px 18px;
     }
 
     &:after {
-      @include triangle(bottom, 9px, 5px, $white);
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-image: nav-image-url('icon-arrow-down-white-10.png');
+      background-image: nav-image-url('icon-arrow-down-white-10.svg'), none;
       content: "";
       display: block;
       position: absolute;
       right: 20px;
       top: 50%;
-      -webkit-transform: translateY(-50%);
-      -moz-transform: translateY(-50%);
-      transform: translateY(-50%);
+      width: 10px;
+      height: 6px;
+      -webkit-transform: translateY(-40%);
+      -moz-transform: translateY(-40%);
+      transform: translateY(-40%);
 
       .no-csstransitions & {
-        top: 43%;
+        top: 51%;
+      }
+
+      .no-cssanimations.no-csstransforms & {
+        top: 46%;
       }
     }
   }
@@ -110,16 +126,23 @@
 
 .child-list {
   background: $white;
-  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,.4);
   display: none;
   left: 0;
   position: absolute;
-  top: 3px;
+  top: 7px;
   padding-top: 35px;
   width: 100%;
 
-  .no-csstransitions & {
+  // IE8 + IE9
+  .no-cssanimations & {
+    width: 98.5%;
+  }
+
+  // IE8
+  .no-cssanimations.no-csstransforms & {
     border: 1px solid $grey-light;
+    width: 99.2%;
   }
 }
 
@@ -128,7 +151,7 @@
 }
 
 .child-list__item a {
-  color: $grey-dark;
+  color: #666;
   font-size: 12px;
   padding: 10px 20px;
 
@@ -136,182 +159,10 @@
     background: $grey-lightest;
     color: $grey-darkest;
   }
-}
 
-.btn-apply-now {
-  @include improve-text-rendering;
-  background: $green;
-  color: $white;
-  display: inline-block;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 38px;
-  padding: 0 26px;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.5s ease-in-out;
-
-  &:hover {
-    background: lighten($green,4);
-    transition: all 0.5s ease-in-out;
-  }
-
-  .no-csstransitions & {
-    padding: 0 14px;
-  }
-}
-
-/*
- * Used in a stick nav - might not be needed for Iman
- */
-.nav-2 {
-  box-shadow: 0 2px 20px rgba(#000, 0.35);
-  display:block;
-
-  & > .nav__item,
-  &.nav-sticky .nav__item {
-    @include border-box;
-    display: block;
-    float: left;
-    position: relative;
-    &:first-child {
-      border-left: 0;
-      a,
-      span {
-        border-radius: 0 0 0 5px;
-      }
-    }
-    &:last-child {
-      a,
-      span {
-        border-radius: 0 0 5px 0;
-      }
-    }
-  }
-
-  & > .nav__item > a,
-  & > .nav__item > span,
-  &.nav-sticky .nav__item a {
-    @include improve-text-rendering;
-    @include vertical-gradient(#f9f9f9, #ddd, #f9f9f9);
-    border-bottom: 1px solid #fff;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #ddd;
-    //color: $grey;
-    display: block;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: baseline(2);
-    padding: 0 10px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    &:hover {
-      @include vertical-gradient(#fff, #ddd, #f9f9f9);
-      //color: $dark-grey;
-    }
-    &.is-selected {
-      @include vertical-gradient(#fff, #ddd, #f9f9f9);
-      //color: $dark-green;
-      position: relative;
-      &:after,
-      &:before {
-        @include show-pseudo-element;
-        @include triangle('bottom', 20px, 10px, #ddd);
-        bottom: -10px;
-        left: 50%;
-        margin-left: -10px;
-        position: absolute;
-      }
-      &:before {
-        @include triangle('bottom', 22px, 11px, #fff);
-        bottom: -12px;
-        margin-left: -11px;
-      }
-      .no-cssgradients &:after {
-        display: none;
-      }
-
-      // ie10
-      .no-pointerevents &:after {
-        @include triangle('bottom', 20px, 10px, #fafafa);
-        bottom: -9px;
-      }
-    }
-  }
-
-  @media (max-width: 800px) {
-    &.nav-sticky .nav__item:first-child a,
-    &.nav-sticky .nav__item:last-child a {
-      border-radius: 0 !important;
-    }
-
-    &.nav-sticky .nav__item .is-selected:before,
-    &.nav-sticky .nav__item .is-selected:after {
-      display: none !important;
-    }
-  }
-
-
-  .nav__item--parent > a,
-  .nav__item--parent > span {
-    position: relative;
-    z-index: 2;
-
-    @include after {
-      @include show-pseudo-element;
-      @include transform(translateY(-50%));
-      top: 50%;
-      position: absolute;
-      right: 15px;
-      height: 16px;
-      width: 16px;
-      opacity: 0.8;
-      background: component-url('nib-styles-accordion', 'down.png') no-repeat top right;
-      background: component-url('nib-styles-accordion', 'down.svg') no-repeat top right, none;
-      background-size: 16px 16px;
-    }
-
-    // Pre-load the other image so we don't get a flash
-    @include before {
-      background: component-url('nib-styles-accordion', 'up.svg') no-repeat top right;
-      height: 0;
-      width: 0;
-      position: absolute;
-    }
-
-    &.is-open:after {
-      background-image: component-url('nib-styles-accordion', 'up.png');
-      background-image: component-url('nib-styles-accordion', 'up.svg'), none;
-    }
-    &:hover {
-      &::after {
-        opacity: 1;
-      }
-    }
-  }
-
-  &.nav--vertical {
-    & > .nav__item {
-      float: none;
-      &:last-child > a,
-      &:last-child > span {
-        border-bottom: 0;
-      }
-    }
-    & > .nav__item > a,
-    & > .nav__item > span {
-      border-radius: 0;
-      text-align: left;
-      padding: 0 20px;
-      border-bottom: 1px solid #bbb;
-      border-left: 0;
-    }
-    & > .nav__sub {
-      position: relative;
-      z-index: 1;
-    }
+  .no-csstransforms & {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -365,7 +216,6 @@
     font-size: 12px;
   }
 }
-
 
 .nav-4 {
   border-top: 1px solid #666;
