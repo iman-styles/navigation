@@ -50,15 +50,10 @@
  * Iman - Main nav
  */
 .nav-1 {
-  padding-left: 152px;
-
-  // ie8
-  .no-csstransforms & {
-    padding-left: 147px;
-  }
+  text-align: right;
 
   > .nav__item {
-    float: left;
+    display: inline-block;
     position: relative;
 
     &:hover > a,
@@ -112,6 +107,10 @@
 
   > .nav__item:hover > .child-list {
     display: block;
+  }
+
+  .nav__item {
+    text-align: left;
   }
 
   .nav__item a,
