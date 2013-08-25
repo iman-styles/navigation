@@ -90,11 +90,11 @@
       transform: translateY(-40%);
 
       .no-csstransitions & {
-        top: 51%;
+        top: 47%;
       }
 
       .no-cssanimations.no-csstransforms & {
-        top: 46%;
+        top: 45%;
       }
     }
   }
