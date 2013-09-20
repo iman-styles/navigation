@@ -401,7 +401,7 @@
     padding: 2px 0;
     position: relative;
     top: -3px;
-    width: 85px;
+    width: 115px;
     z-index: 100;
 
     &:before,
@@ -427,7 +427,7 @@
 
     .no-csstransitions &:before,
     .no-csstransitions &:after {
-      left: 36px;
+      left: 56px;
     }
   }
 
