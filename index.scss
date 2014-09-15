@@ -70,7 +70,7 @@
     color: $white;
     font-size: 14px;
     line-height: 35px;
-    padding: 12px 38px 12px 18px;
+    padding: 12px 38px 13px 18px;
     position: relative;
 
     &:after {
@@ -337,118 +337,69 @@
 
 // Iman Progress Nav - Used throughout Join
 .im-nav-progress {
-  overflow: hidden;
-  padding-top: 3px; // prevent the border cut-off of an active item
+  bottom: -1px;
   position: relative;
 
-  &:before {
-    @include linear-gradient(#79be10, #b9f859, left);
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 10px;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    z-index: 1;
+  .im-nav-progress__item {
+    float: left;
+    position: relative;
+    text-align: center;
   }
 
   .im-nav-progress__item {
     float: left;
-    height: 40px;
     position: relative;
     text-align: center;
 
-    &:before,
-    &:after {
+    &:before {
+      background: $grey-light;
       bottom: 0;
       content: "";
       display: block;
       height: 10px;
       position: absolute;
+      width: 100%;
+      left: 0;
+      z-index: 1;
+    }
+
+    &:after {
+      display: block;
+      position: absolute;
+      height: 10px;
+      left: 0;
+      bottom: 0;
+      background: rgba(#000, 0.1);
+      content: "";
       width: 1px;
       z-index: 5;
     }
 
-    &:before {
-      background: #ccc;
-      background: rgba(#fff, 0.4);
-      left: -1px;
-    }
-
-    &:after {
-      background: #888;
-      background: rgba(#000, 0.2);
-      left: 0;
+    &:first-child:after {
+      display: none;
     }
   }
 
-  .label {
-    color: #777;
+  .im-nav-progress__item a {
+    @extend .anchor-2;
     display: block;
-    font-size: 15px;
+    font-size: 14px;
     padding: 0 0 20px 0;
+    position: relative;
     text-decoration: none;
   }
 
-  .is-current .label {
-    background: #fff;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    color: #444;
-    display: inline-block;
+  .im-nav-progress__item.is-active a {
+    color: $blue-lightest;
     font-weight: 600;
-    padding: 2px 0;
-    position: relative;
-    top: -3px;
-    width: 125px;
-    z-index: 100;
-
-    &:before,
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      transform: translateX(-50%);
-    }
-
-    &:before {
-      @include triangle('bottom', 12px, 6px, #ccc);
-      bottom: -7px;
-    }
-
-    &:after {
-      @include triangle('bottom', 12px, 6px, #fff);
-      bottom: -6px;
-    }
-
-    .no-csstransitions &:before,
-    .no-csstransitions &:after {
-      left: 56px;
-    }
   }
 
-  .mask {
-    @include animation(slide-right ease 0.5s 0.5s forwards);
-    background: #eee;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 10px;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-
-    .no-csstransitions & {
-      left: 50%;
-    }
+  .im-nav-progress__item a  {
+    background-color: transparent;
   }
 
-  .is-completed .mask {
-    display: none;
+  .im-nav-progress__item:first-child:before,
+  .im-nav-progress__item.is-visited:before {
+    background: $blue-lightest nav-image-url('stripes.gif') top right;
   }
 }
